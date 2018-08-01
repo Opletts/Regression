@@ -20,15 +20,15 @@ net = Net()
 criterion = nn.MSELoss()
 optimizer = optim.SGD(net.parameters(), lr = 0.01)
 # print net, len(list(net.parameters()))
-for epoch in range(100):
+for epoch in range(1000):
 	y_pred = net(x_data)
 	# print y_pred
 	loss = criterion(y_pred, y_data)
-	# print loss.data[0]
+	print loss.data[0]
 	optimizer.zero_grad()
 	loss.backward()
 	optimizer.step()
 
 test = Variable(torch.Tensor([[10], [12], [14], [16]]))
 # print list(net.parameters())
-print net.forward(test).data
+print net(test).data[0][0]
